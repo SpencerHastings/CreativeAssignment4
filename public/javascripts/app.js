@@ -26,11 +26,13 @@ function mainCtrl($scope, restaurantFetcher, $http, $window) {
         { value: 'cheesecake', name: 'Cheesecake Factory' }
     ];
     $scope.starOptions = [
-        { value: 'caferio', name: '★★★★★' },
+        '\u2606\u2606\u2606\u2606\u2606',
+        '\u2605\u2606\u2606\u2606\u2606',
+        '\u2605\u2605\u2606\u2606\u2606',
+        '\u2605\u2605\u2605\u2606\u2606',
+        '\u2605\u2605\u2605\u2605\u2606',
+        '\u2605\u2605\u2605\u2605\u2605',
         
-        { value: 'mcdonalds', name: '★★★★★' }' },
-        
-        { value: 'cheesecake', name: 'Cheesecake Factory' }
     ];
     $scope.restaurantSelect = $scope.availableOptions[0];
     $scope.addPost = function() {
