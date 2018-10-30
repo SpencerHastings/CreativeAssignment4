@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
-//0 - McDonalds
-//1 - Cafe Rio
-//2 - Cheesecake Factory
-var posts = [
-    [{
+var posts = {
+    mcdonalds: [{
             name: 'Bob',
             post: 'Great restaurant.'
         },
@@ -13,7 +10,7 @@ var posts = [
             post: 'This sucks.'
         }
     ],
-    [{
+    caferio: [{
             name: 'Bob',
             post: 'Great restaurant.'
         },
@@ -22,7 +19,7 @@ var posts = [
             post: 'This sucks.'
         }
     ],
-    [{
+    cheesecake: [{
             name: 'Bob',
             post: 'Great restaurant.'
         },
@@ -31,40 +28,25 @@ var posts = [
             post: 'This sucks.'
         }
     ]
-];
+};
 
 /* GET home page. */
 router.get('/', function(req, res) {
     res.sendFile('index.html', { root: 'public' });
 });
 
-router.get('/restaurant/mcd', function(req, res) {
-    console.log("In MCD");
+router.get('/restaurant', function(req, res) {
+    console.log("In");
     res.send(posts);
 });
 
-router.post('/restaurant/mcd', function(req, res) {
-    console.log("In  Post");
+router.post('/restaurant', function(req, res) {
+    console.log("In Post");
     console.log(req.body);
     
     var restaurant = req.query['q'];
-    
-    if (restaurant == "mcdonalds")
-    {
-        posts[0].push(req.body);
-    }
-    else if (restaurant == "caferio")
-    {
-        posts[1].push(req.body);
-    }
-    else if (restaurant == "cheesecakefactory")
-    {
-        posts[2].push(req.body);
-    }
-    else
-    {
-        //default
-    }
+    posts[restaurant].push(req.body);
+    console.log(posts);
     
     res.end('{"success" : "Updated Successfully", "status" : 200}');
 });
