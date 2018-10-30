@@ -16,7 +16,7 @@
       </h1>
       <form class="mb-5" ng-submit="addPost()">
         <input class="form-control my-2" ng-model="Name" type="text" placeholder="Name">
-        <input class="form-control my-2" ng-model="PostText" type="text" placeholder="Add Rating">
+        <input class="form-control my-2" ng-model="PostText" type="text" placeholder="Add Review">
         <select name='starOption' ng-model="starSelect" ng-options="option for option in starOptions" class="form-control my-2"></select>
         <select name='restaurantOption' ng-model="restaurantSelect" ng-options="option.name for option in availableOptions" class="form-control my-2"></select>
         <button class="btn btn-success" id="submitPost" type="submit">Submit</button>
