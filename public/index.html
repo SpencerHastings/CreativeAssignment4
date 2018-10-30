@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="stylesheets/style.css">
 
 <div class="container">
     <div id='app' ng-app='app' ng-controller='mainCtrl'>
@@ -16,6 +17,7 @@
             <form ng-submit="addPost()">
                 <input ng-model="Name" type="text" placeholder="Name">
                 <input ng-model="PostText" type="text" placeholder="Add Rating">
+                <select name='starOption' ng-model="starSelect" ng-options="option for option in starOptions" class="form-control my-2"></select>
                 <select name='restaurantOption' ng-model="restaurantSelect" ng-options="option.name for option in availableOptions" class="form-control my-2"></select>
                 <button id="submitPost" type="submit">Submit</button>
             </form>
@@ -25,8 +27,8 @@
             <div class="col-sm">
                 <img src="images/mcdonalds.jpg" width="300">
                 <ul ng-if='posts["mcdonalds"].length' class="list-group">
-                    <li class="list-group-item" ng-repeat='p in posts["mcdonalds"]'>
-                        <b>{{p.name}}</b><br>{{p.post}}
+                    <li class="list-group-item" ng-repeat='p in posts["mcdonalds"] | orderBy: "+stars"'>
+                        <b>{{p.name}} - <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
                     </li>
                 </ul>
             </div>
@@ -34,7 +36,7 @@
                 <img src="images/caferio.jpg" width="300">
                 <ul ng-if='posts["caferio"].length' class="list-group">
                     <li class="list-group-item" ng-repeat='p in posts["caferio"]'>
-                        <b>{{p.name}}</b><br>{{p.post}}
+                        <b>{{p.name}} - <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
                     </li>
                 </ul>
             </div>
@@ -42,7 +44,7 @@
                 <img src="images/cheesecakefactory.jpg" width="300">
                 <ul ng-if='posts["cheesecake"].length' class="list-group">
                     <li class="list-group-item" ng-repeat='p in posts["cheesecake"]'>
-                        <b>{{p.name}}</b><br>{{p.post}}
+                        <b>{{p.name}} - <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
                     </li>
                 </ul>
             </div>

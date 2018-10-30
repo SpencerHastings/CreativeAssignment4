@@ -1,32 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var posts = {
-    mcdonalds: [{
-            name: 'Bob',
-            post: 'Great restaurant.'
-        },
-        {
-            name: 'Susan',
-            post: 'This sucks.'
-        }
+    mcdonalds: [
     ],
-    caferio: [{
-            name: 'Bob',
-            post: 'Great restaurant.'
-        },
-        {
-            name: 'Susan',
-            post: 'This sucks.'
-        }
+    caferio: [
     ],
-    cheesecake: [{
-            name: 'Bob',
-            post: 'Great restaurant.'
-        },
-        {
-            name: 'Susan',
-            post: 'This sucks.'
-        }
+    cheesecake: [
     ]
 };
 

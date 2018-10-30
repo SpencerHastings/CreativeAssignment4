@@ -35,8 +35,10 @@ function mainCtrl($scope, restaurantFetcher, $http, $window) {
         
     ];
     $scope.restaurantSelect = $scope.availableOptions[0];
+    $scope.starSelect = $scope.starOptions[0];
     $scope.addPost = function() {
-        var formData = { name: $scope.Name, post: $scope.PostText };
+        console.log($scope.starSelect);
+        var formData = { name: $scope.Name, post: $scope.PostText, stars: $scope.starSelect };
         var restaurant = $scope.restaurantSelect.value;
         console.log(formData);
         console.log(restaurant);
