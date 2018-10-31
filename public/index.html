@@ -9,51 +9,60 @@
 <link rel="stylesheet" href="stylesheets/style.css">
 
 <div class="container">
-  <div id='app' ng-app='app' ng-controller='mainCtrl'>
-    <center>
-      <h1 class="display-3">
-        Restaurant Ratings
-      </h1>
-      <form class="mb-5" ng-submit="addPost()">
-        <input class="form-control my-2" ng-model="Name" type="text" placeholder="Name">
-        <input class="form-control my-2" ng-model="PostText" type="text" placeholder="Add Review">
-        <select name='starOption' ng-model="starSelect" ng-options="option for option in starOptions" class="form-control my-2"></select>
-        <select name='restaurantOption' ng-model="restaurantSelect" ng-options="option.name for option in availableOptions" class="form-control my-2"></select>
-        <button class="btn btn-success" id="submitPost" type="submit">Submit</button>
-      </form>
-    </center>
+    <div id='app' ng-app='app' ng-controller='mainCtrl'>
+        <center>
+            <h1 class="display-3">
+                Restaurant Ratings
+            </h1>
+            <form class="mb-5" ng-submit="addPost()">
+                <input class="form-control my-2" ng-model="Name" type="text" placeholder="Name">
+                <input class="form-control my-2" ng-model="PostText" type="text" placeholder="Add Review">
+                <select name='starOption' ng-model="starSelect" ng-options="option for option in starOptions" class="form-control my-2"></select>
+                <select name='restaurantOption' ng-model="restaurantSelect" ng-options="option.name for option in availableOptions" class="form-control my-2"></select>
+                <button class="btn btn-success" id="submitPost" type="submit">Submit</button>
+            </form>
+        </center>
 
-    <div class="row">
-      <div class="col-sm">
-        <div class="image-container">
-          <img class="image" src="images/mcdonalds.jpg" width="300">
+        <div class="row">
+            <div class="col-sm">
+                <h2>
+                    McDonalds
+                </h2>
+                <div class="image-container">
+                    <img class="image" src="images/mcdonalds.jpg" width="300">
+                </div>
+                <ul ng-if='posts["mcdonalds"].length' class="list-group">
+                    <li class="list-group-item" ng-repeat='p in posts["mcdonalds"] | orderBy: "+stars"'>
+                        <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <h2>
+                    Cafe Rio
+                </h2>
+                <div class="image-container">
+                    <img class="image" src="images/caferio.jpg" width="300">
+                </div>
+                <ul ng-if='posts["caferio"].length' class="list-group">
+                    <li class="list-group-item" ng-repeat='p in posts["caferio"]'>
+                        <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <h2>
+                    Cheesecake Factory
+                </h2>
+                <div class="image-container">
+                    <img class="image" src="images/cheesecakefactory.jpg" width="300">
+                </div>
+                <ul ng-if='posts["cheesecake"].length' class="list-group">
+                    <li class="list-group-item" ng-repeat='p in posts["cheesecake"]'>
+                        <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
+                    </li>
+                </ul>
+            </div>
         </div>
-        <ul ng-if='posts["mcdonalds"].length' class="list-group">
-          <li class="list-group-item" ng-repeat='p in posts["mcdonalds"] | orderBy: "+stars"'>
-            <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
-          </li>
-        </ul>
-      </div>
-      <div class="col-sm">
-        <div class="image-container">
-          <img class="image" src="images/caferio.jpg" width="300">
-        </div>
-        <ul ng-if='posts["caferio"].length' class="list-group">
-          <li class="list-group-item" ng-repeat='p in posts["caferio"]'>
-            <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
-          </li>
-        </ul>
-      </div>
-      <div class="col-sm">
-        <div class="image-container">
-          <img class="image" src="images/cheesecakefactory.jpg" width="300">
-        </div>
-        <ul ng-if='posts["cheesecake"].length' class="list-group">
-          <li class="list-group-item" ng-repeat='p in posts["cheesecake"]'>
-            <b>{{p.name}} <span class="stars">{{p.stars}}</span></b><br>{{p.post}}
-          </li>
-        </ul>
-      </div>
     </div>
-  </div>
 </div>
